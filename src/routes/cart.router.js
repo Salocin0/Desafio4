@@ -1,14 +1,11 @@
 import express from "express";
 import CartManager from "../manager/CartManager.js";
-
 export const routerCarts = express.Router();
 
-//get todos + limit
 routerCarts.get('/', (req, res) => {
   const cm = new CartManager()  
   const carts = cm.getCarts()
   const limit = req.query.limit || -1;
-  
     if(limit==-1 && carts.length>0){
       return res.status(200).json({
         status: "sucess",
@@ -29,8 +26,7 @@ routerCarts.get('/', (req, res) => {
       })
     }
   });
-  
-  //getById
+
   routerCarts.get('/:id', (req, res) => {
     const cm = new CartManager()
     const cart = cm.getCartById(req.params.id);
@@ -49,12 +45,10 @@ routerCarts.get('/', (req, res) => {
     }
   });
 
-  //deletebyid
   routerCarts.delete("/:id", (req, res) => {
     const cm = new CartManager()
     const id = req.params.id;
     const carts = cm.deleteCart(id);
-    
     if (typeof carts !== 'string') {
       return res.status(200).json({
         status: "sucess",
@@ -70,7 +64,6 @@ routerCarts.get('/', (req, res) => {
     }
   });
 
-  //new
   routerCarts.post("/", (req, res) => {
     const cm = new CartManager()
     const cart = cm.addCart()
@@ -80,6 +73,7 @@ routerCarts.get('/', (req, res) => {
       data: {cart},
     })
   });
+
   routerCarts.post("/:cid/product/:pid", (req, res) => {
     const cm = new CartManager()
     const cartId = req.params.cid
@@ -98,4 +92,4 @@ routerCarts.get('/', (req, res) => {
         data: {cart},
       })
     }
-  });
+});

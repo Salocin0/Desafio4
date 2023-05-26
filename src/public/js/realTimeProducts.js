@@ -1,34 +1,19 @@
 const socket = io();
 
-//Create product and add new product in the table
 let formProducts = document.getElementById("form-products")
-let title = document.getElementById("form-new-product-title")
-let description = document.getElementById("form-new-product-description")
-let price = document.getElementById("form-new-product-price")
-let thumbnails = document.getElementById("form-new-product-thumbnails")
-let code = document.getElementById("form-new-product-code")
-let stock = document.getElementById("form-new-product-stock")
-let category = document.getElementById("form-new-product-category")
-let status = document.getElementById("form-new-product-status")
-
 formProducts.addEventListener("submit", (e) => {
   e.preventDefault();
-  // Evita el comportamiento predeterminado de envío del formulario, que provocaría la recarga de la página
-
   let newProduct = {
-    title: title.value,
-    description: description.value,
-    price: price.value,
-    thumbnails: [thumbnails.value],
-    code: code.value,
-    stock: stock.value,
-    category: category.value,
-    status: status.checked
+    title: document.getElementById("title").value,
+    description: document.getElementById("description").value,
+    price: document.getElementById("price").value,
+    thumbnails: document.getElementById("thumbnails"),
+    code: document.getElementById("code").value,
+    stock: document.getElementById("stock").value,
+    category: document.getElementById("category").value,
+    status: document.getElementById("status").checked
   };
-  // Crea un nuevo objeto llamado "newProduct" y asigna los valores de los campos del formulario a sus propiedades
-
   socket.emit("new-product-created", newProduct);
-  // Emite un evento "new-product-created" utilizando un socket (presumiblemente un WebSocket) y envía el objeto newProduct como datos
 });
 
 socket.on("repeat-code", (bool)=>{
@@ -65,8 +50,6 @@ socket.on("products", (products) => {
     setDelete(btnDelete);
 });
 
-
-// Delete product and delete in table
 let btnDelete = document.querySelectorAll(".btn-delete");
 
 function setDelete(btnDelete) {
@@ -96,15 +79,14 @@ function setDelete(btnDelete) {
 }
 
 setDelete(btnDelete);
-
 socket.on("delete-product-in-table", (idToDelete) => {
-  
-  btnDelete = document.querySelectorAll(".btn-delete");
-  for (let btn of btnDelete) {
-    if (btn.value == idToDelete) {
-      let hijo = btn.parentNode;
-      let padre = hijo.parentNode;
-      padre.remove()
-    }
+
+btnDelete = document.querySelectorAll(".btn-delete");
+for (let btn of btnDelete) {
+  if (btn.value == idToDelete) {
+    let hijo = btn.parentNode;
+    let padre = hijo.parentNode;
+    padre.remove()
   }
+}
 })

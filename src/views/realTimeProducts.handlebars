@@ -1,50 +1,43 @@
 <div class="realtimeproducts-container">
     <form id="form-products">
-    <div class="input-container title-price">
+    <div class="newProduct">
         <div class="input-form">
             <label for="title">Title:</label>
-            <input id="form-new-product-title" type="text" name="title" placeholder="Title" required/>
+            <input id="title" type="text" name="title" placeholder="Title" required/>
         </div>
         <div class="input-form">
             <label for="price">Price:</label>
-            <input id="form-new-product-price" type="number" name="price" placeholder="Price" required/>
+            <input id="price" type="number" name="price" placeholder="Price" required/>
         </div>
-    </div>
-    <div class="input-container description-thumbail">
         <div class="input-form">
             <label for="description">Description:</label>
-            <input id="form-new-product-description" type="text" name="description" placeholder="Description" required/>
+            <input id="description" type="text" name="description" placeholder="Description" required/>
         </div>
         <div class="input-form">
             <label for="thumbnails">Thumbnails:</label>
-            <input id="form-new-product-thumbnails" type="text" name="thubmail" placeholder="Thumbnail"/>
+            <input id="thumbnails" type="text" name="thubmail" placeholder="Thumbnail"/>
         </div>
-    </div>
-    
-    <div class="input-container code-stock">
         <div class="input-form">
             <label for="code">Code:</label>
-            <input id="form-new-product-code" type="text" name="code" placeholder="Code" required/>
+            <input id="code" type="text" name="code" placeholder="Code" required/>
         </div>
         <div class="input-form">
             <label for="stock">Stock:</label>
-            <input id="form-new-product-stock" type="number" name="stock" placeholder="Stock" required/>
+            <input id="stock" type="number" name="stock" placeholder="Stock" required/>
         </div>
-    </div>
-    <div class="input-category status">
         <div class="input-form">
             <label for="category">Category:</label>
-            <input id="form-new-product-category" type="text" name="category" placeholder="Category" required/>
+            <input id="category" type="text" name="category" placeholder="Category" required/>
         </div>
         <div class="input-form">
             <label for="status">Status:</label>
-            <input id="form-new-product-status" type="checkbox" name="status"/>
+            <input id="status" type="checkbox" name="status"/>
         </div>
+        <input id="btn-form" type="submit" value="Crear Producto"/>
     </div>
-    <input id="btn-form" type="submit" value="Crear Producto"/>
+</div>
+    
 </form>
-
-
     <div class="table-container">
         <h1>Todos los productos</h1>
         <table>
